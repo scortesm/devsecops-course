@@ -13,7 +13,7 @@ pipeline {
 					-o "./" 
 					-s "./"
 					-f "ALL" 
-					--prettyPrint''', odcInstallation: 'Dependency-Check'
+					--prettyPrint''', odcInstallation: 'Dependency-Check', includeCsvReports: false
 				dependencyCheckPublisher pattern: 'dependency-check-report.xml'
 			}	
 		}   
