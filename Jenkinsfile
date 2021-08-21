@@ -1,9 +1,10 @@
 pipeline {
-  stages{
-    stage('Checkout') {
-      steps{
-        echo "------------>Checkout<------------"
-			  checkout scm
+agent any
+stages{
+	stage('Checkout') {
+		steps{
+        	echo "------------>Checkout<------------"
+				checkout scm
       }
     }
  	stage('Dependency Analysis') {
