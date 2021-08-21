@@ -8,16 +8,14 @@ pipeline {
 			}
 		}
 		stage('Dependency Analysis') {
-			steps{
-				steps {
-						dependencyCheck additionalArguments: ''' 
-							-o "./" 
-							-s "./"
-							-f "ALL" 
-							--prettyPrint''', odcInstallation: 'Dependency-Check'
-						dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-				}
-			}
+			steps {
+				dependencyCheck additionalArguments: ''' 
+					-o "./" 
+					-s "./"
+					-f "ALL" 
+					--prettyPrint''', odcInstallation: 'Dependency-Check'
+				dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+			}	
 		}   
 	}
 }
