@@ -13,7 +13,7 @@ pipeline {
 					-o "./" 
 					-s "./"
 					-f "ALL"
-					includeCsvReports: false
+					includeCsvReports "false"
 					--prettyPrint''', odcInstallation: 'Dependency-Check'
 				dependencyCheckPublisher pattern: 'dependency-check-report.xml'
 			}	
