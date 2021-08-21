@@ -7,6 +7,7 @@ pipeline {
 					checkout scm
 			}
 		}
+		// -f:Format, -o:out, -s:scan
 		stage('Dependency Analysis') {
 			steps {
 				dependencyCheck additionalArguments: ''' 
