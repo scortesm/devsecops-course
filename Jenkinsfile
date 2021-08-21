@@ -12,8 +12,9 @@ pipeline {
 				dependencyCheck additionalArguments: ''' 
 					-o "./" 
 					-s "./"
-					-f "ALL" 
-					--prettyPrint''', odcInstallation: 'Dependency-Check', includeCsvReports: false
+					-f "ALL"
+					includeCsvReports: false
+					--prettyPrint''', odcInstallation: 'Dependency-Check'
 				dependencyCheckPublisher pattern: 'dependency-check-report.xml'
 			}	
 		}   
