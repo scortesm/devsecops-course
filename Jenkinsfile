@@ -1,22 +1,20 @@
 pipeline {
-    agent any
-    stages {
-        stage('build sin test') {
-            steps {
-                nodejs(nodeJSInstallationName: 'nodejs') {
-                    sh 'npm install'                    
-                    // stash name: "ws", includes: "**"
-                }           
-            }
-        }        
-        stage('deploy') {
-            steps {
-                nodejs(nodeJSInstallationName: 'nodejs') {
-                    withAWS(credentials: 'aws-credentials') {
-                    sh 'serverless deploy'
-                    }
-                }
-            }
-        }
+  stages{
+    stage('Checkout') {
+      steps{
+        echo "------------>Checkout<------------"
+			  checkout scm
+      }
     }
+ 	stage('Dependency Analysis') {
+		steps{
+	        echo '------------>Análisis de dependencias<------------'
+	        dependencyCheckAnalyzer datadir: 'dependency-check-data', hintsFile: '', includeCsvReports: false, includeHtmlReports: true,          includeJsonReports: false, includeVulnReports: true, isAutoupdateDisabled: false, outdir: '.', scanpath: '', skipOnScmChange: false, skipOnUpstreamChange: false, suppressionFile: '', zipExtensions: ''
+	        echo '------------>Análisis Finalizado<------------' 
+	        dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+	        echo '------------>Publicando Resultados<------------'
+
+	    }
+    }   
+  }
 }
