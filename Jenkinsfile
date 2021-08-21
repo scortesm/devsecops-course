@@ -12,8 +12,7 @@ pipeline {
 				dependencyCheck additionalArguments: ''' 
 					-o "./" 
 					-s "./"
-					-f "ALL"
-					includeCsvReports "false"
+					-f "XML"
 					--prettyPrint''', odcInstallation: 'Dependency-Check'
 				dependencyCheckPublisher pattern: 'dependency-check-report.xml'
 			}	
