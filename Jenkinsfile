@@ -12,7 +12,7 @@ pipeline {
 			steps {
 				dependencyCheck additionalArguments: ''' 
 					-o "./" 
-					-s "./"
+					-s "./backup"
 					-f "XML"
 					--prettyPrint''', odcInstallation: 'Dependency-Check'
 				dependencyCheckPublisher pattern: 'dependency-check-report.xml'
