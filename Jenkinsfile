@@ -14,8 +14,8 @@ pipeline {
 		stage('Dependency Analysis') {
 			steps {
 				dependencyCheck additionalArguments: ''' 
-					-o "./" 
-					-s "./backup"
+					-o "./backup" 
+					-s "./"
 					-f "XML"
 					--prettyPrint''', odcInstallation: 'Dependency-Check'
 				dependencyCheckPublisher pattern: 'dependency-check-report.xml'
